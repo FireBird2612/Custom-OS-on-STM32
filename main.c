@@ -1,7 +1,7 @@
+#include "log_init.h"
 
 int main(){
-    int val = 0;
-    while(1){
-        val += 1;
-    }
+    log_data((unsigned char *)"FPU Initialised!\n");
+    volatile float val = 1.0f, val1 = 3.0f, result;
+    result = val + val1;
 }
