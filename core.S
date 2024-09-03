@@ -11,6 +11,14 @@
 .type reset_handler, %function
 reset_handler:
 
+    /*  Enable the Hardware FPU */
+    LDR.W r0, =0xE000ED88
+    LDR r1, [r0]
+    ORR r1, r1, #(0xF << 20)
+    STR r1, [r0]
+    DSB
+    ISB
+
     /*  Copying the data from FLASH to RAM */
     MOVS r0, #0         /*  copy 0 in r0 register and set the appro. flag in ASPR   */
     LDR r1, =_sidata     /*  Load the address from _sidata into r1   */
@@ -42,6 +50,8 @@ reset_handler:
         CMP r1, r2
         BCC copy_sbss
 
+        LDR r0, =9600
+        BL uart_init
         B main              /*   Thats it, finally we can branch to main */
 .size reset_handler, .-reset_handler
 
