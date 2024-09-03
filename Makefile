@@ -23,12 +23,14 @@ SZ = arm-none-eabi-size
 ASFLAGS += -c
 ASFLAGS += -Wall
 ASFLAGS += -mcpu=$(MCU)
+ASFLAGS += -mfloat-abi=hard
 ASFLAGS += -mthumb
 ASFLAGS += -O0
 
 # Compilation directives
 # Generate debugging information
 CFLAGS += -mcpu=$(MCU)
+CFLAGS += -mfloat-abi=hard
 CFLAGS += -Wall
 CFLAGS += -mthumb
 CFLAGS += -g
@@ -39,11 +41,12 @@ CFLAGS += -g
 #LFLAGS += ./$(LD_SCRIPT)
 LFLAGS += -mcpu=$(MCU)
 LFLAGS += -mthumb
+LFLAGS += -mfloat-abi=hard
 LFLAGS += -nostdlib
 LFLAGS += -lgcc
 LFLAGS += -T./$(LD_SCRIPT)
 
-C_SRC = ./main.c
+C_SRC = ./main.c ./uart_log.c
 ASM = ./core.S
 
 # Automatic substitution
