@@ -1,4 +1,4 @@
-#include "log_init.h"
+#include "../include/log_init.h"
 
 void uart_init(const unsigned int baudrate){
     RCC_AHB1 |= (1 << 0);           /*  Clock for GPIOA     */

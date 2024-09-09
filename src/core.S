@@ -49,9 +49,10 @@ reset_handler:
     copy_sbss_loop:
         CMP r1, r2
         BCC copy_sbss
-
+        
         LDR r0, =9600
         BL uart_init
+        
         B main              /*   Thats it, finally we can branch to main */
 .size reset_handler, .-reset_handler
 

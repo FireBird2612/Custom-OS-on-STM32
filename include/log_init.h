@@ -17,7 +17,7 @@
 #define USART_DR    (*(volatile unsigned int *)(USART2_BASE + 0x04))        /*  Data register   */  
 
 /*  Function Prototypes */
-void uart2_init(const unsigned int baudrate);
+void uart_init(const unsigned int baudrate);
 void log_data(unsigned char *data);
 
 #endif
